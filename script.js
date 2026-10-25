@@ -1,19 +1,32 @@
-const inputText = document.getElementById('todoInput');
+const input = document.getElementById('todoInput');
 const list = document.getElementById('todoList');
-const clear = document.querySelector('.clear')
+const clear = document.getElementById('clear-btn');
 
-inputText.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' && inputText.value !== '') {
+let arr1 = [];
 
-        const newTask = document.createElement('li'); // create new element
-        newTask.textContent = inputText.value; //instantiate inputval to new element, newTask
-        list.appendChild(newTask); //append to the list element
-        
-        inputText.value = '' // reset bar after enter
-        
+input.addEventListener('keydown', (event) => {
+    if ( event.key === 'Enter' ) {
+        addEvent()
     }
 })
 
-clear.addEventListener('click', () => { 
-    list.innerHTML = '' 
+function addEvent() {
+    arr1.push(input.value.trim());
+    input.value = '';
+    renderList()
+}
+
+function renderList() {
+    addedHTML = '';
+    for (let i = 0; i < arr1.length; i ++) {
+        let curTask = arr1[i];
+        addedHTML += `<p> >> ${curTask}<p>`;
+    };
+    list.innerHTML = addedHTML
+}
+
+clear.addEventListener("click", () => {
+    input.value = ''
+    arr1 = []
+    list.innerHTML = ''
 })

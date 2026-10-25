@@ -1,0 +1,18 @@
+li {
+    width: max-content;
+}
+
+
+
+#clear-btn:hover{
+    cursor: pointer;
+}
+
+#todoList {
+    width: max-content;
+}
+#todoList :hover{
+    text-decoration: line-through;
+    cursor: pointer;
+}
+
