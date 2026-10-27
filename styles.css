@@ -1,11 +1,31 @@
+*{
+    font-family: 'Ubuntu Mono', monospace;
+    color-gra;
+}
 #clear-btn:hover{
     cursor: pointer;
 }
 #todoList {
     width: max-content;
+    padding-top: 20px;
+    padding-left: 20px;
 }
-#todoList :hover{
+#trash-btn{
+    background-color: rgb(156, 52, 52);
+    width: max-content;
+}
+.task{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.task.done span {
     text-decoration: line-through;
+    color: gray;
+
+}
+.task span, .trash-btn{
     cursor: pointer;
 }
-
+.trash-btn:hover{
+    background-color: rgb(181, 67, 67);
+}
