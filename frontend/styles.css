@@ -1,31 +1,149 @@
-*{
-    font-family: 'Ubuntu Mono', monospace;
-    color-gra;
+/* THEME COLORS - change these to retheme the whole app */
+:root {
+    --bg: #0d1117;      /* page bg */
+    --panel: #161b22;   /* terminal window */
+    --bar: #21262d;     /* title bar */
+    --border: #30363d;
+    --text: #c9d1d9;
+    --green: #3fb950;
+    --dim: #6e7681;     /* placeholders, done tasks */
+    --red: #f85149;     /* delete hover */
 }
-#clear-btn:hover{
+
+/* BASE */
+* {
+    box-sizing: border-box; /* padding + border stay inside width */
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+html {
+    font-size: 28px; /* 1rem = 28px, everything scales off this */
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 2rem;
+}
+
+/* TERMINAL WINDOW */
+.terminal {
+    max-width: 45rem;
+    margin: 0 auto; /* center on page */
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    overflow: hidden; /* keep bar inside rounded corners */
+}
+
+.terminal-bar {
+    background: var(--bar);
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+#clock {
+    margin-right: 1rem;
+    color: var(--green);
+    font-size: 0.8rem;
+}
+
+.terminal-title {
+    margin-left: auto; /* push to right side of bar */
+    color: var(--dim);
+    font-size: 0.8rem;
+}
+
+.terminal-body {
+    padding: 1.5rem;
+}
+
+/* TITLE */
+h1 {
+    margin: 0 0 1.5rem;
+    color: var(--green);
+    font-size: 2rem;
+}
+
+/* PROMPT LINE - prompt, input, clear btn in one row */
+.prompt-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.prompt {
+    color: var(--green);
+}
+
+input {
+    flex: 1; /* fill leftover space */
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    caret-color: var(--green); /* blinking cursor color */
+    font-size: 1rem;
+}
+
+input::placeholder {
+    color: var(--dim);
+}
+
+/* BUTTONS - text only, no default box */
+button {
+    background: none;
+    border: none;
+    color: var(--dim);
+    font-size: 1rem;
     cursor: pointer;
 }
+
+button:hover {
+    color: var(--text);
+}
+
+.trash-btn {
+    margin-left: auto;
+}
+
+.trash-btn:hover {
+    color: var(--red);
+}
+
+
+/* TASK LIST */
 #todoList {
-    width: max-content;
-    padding-top: 20px;
-    padding-left: 20px;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border); /* splits input from output */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* space between tasks */
 }
-#trash-btn{
-    background-color: rgb(156, 52, 52);
-    width: max-content;
+
+.task {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
 }
-.task{
-    padding-top: 5px;
-    padding-bottom: 5px;
+
+/* highlight row on hover */
+.task:hover {
+    background: var(--bar);
 }
+
+.task span {
+    cursor: pointer;
+}
+
+/* done tasks - crossed out + faded */
 .task.done span {
     text-decoration: line-through;
-    color: gray;
-
-}
-.task span, .trash-btn{
-    cursor: pointer;
-}
-.trash-btn:hover{
-    background-color: rgb(181, 67, 67);
+    color: var(--dim);
 }

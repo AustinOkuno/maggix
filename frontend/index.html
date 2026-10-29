@@ -1,24 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>maggix</title>
-        <link rel="stylesheet" href="styles.css">
-        <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet"> <!--font style-->
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>maggix</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--font style-->
+  </head>
 
-    <body>
-        <h1>Maggix : Productivity Tool / Software</h1>
+  <body>
+    <div class="terminal">
+      <!-- title bar -->
+      <div class="terminal-bar">
+        <span id="clock"></span>
+        <span class="terminal-title">maggix@laptop: ~</span>
+      </div>
 
-        <div class="bar">
-            <input type="text" id="todoInput" placeholder="Type here..">
-            <button id="clear-btn">Clear</button>
+      <div class="terminal-body">
+        <h1>maggix</h1>
+
+        <!-- command prompt line -->
+        <div class="prompt-line">
+          <span class="prompt">user@maggix:~$</span>
+          <input
+            type="text"
+            id="todoInput"
+            placeholder="add a task..."
+            autocomplete="off"
+          />
+          <button id="clear-btn">[ clear ]</button>
         </div>
 
         <div id="todoList"></div>
+      </div>
+    </div>
 
-        <script src="script.js"> </script> 
-    </body>
+    <script src="script.js"></script>
+  </body>
 </html>

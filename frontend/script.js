@@ -33,8 +33,7 @@ function deleteTask(index) {
 // CLEAR 
 clear.addEventListener("click", () => {
     input.value = ''
-    tasksArray = []
-    list.innerHTML = ''
+    tasksArray = [] 
     renderList();
 })
 //
@@ -61,7 +60,7 @@ list.addEventListener('click', (event) => {
 function toggleTask(index) {
     const task = tasksArray[index]
 
-    task.done = !task.done // emulate toggle of check/uncheclk button - flip bool value
+    task.done = !task.done // emulate toggle of check/uncheck button - flip bool value
 
     tasksArray.splice(index, 1); // take out cur spot
 
@@ -83,20 +82,42 @@ function renderList() {
 
         // ternary logic -> ifTrue ? ifFalse
         const doneClass = curTask.done ? 'done' : '';
-        const icon = curTask.done ? '✅' : '⬜';
+        const icon = curTask.done ? '' : '';
 
         //data-index = which task, data-action = what clicking does
         addedHTML += 
             `<div class="task ${doneClass}" data-index="${i}"> 
                 <span data-action="toggle"> ${icon} >> ${curTask.text}</span>
-                <button class="trash-btn"data-action="delete">🗑️</button>
+                <button class="trash-btn"data-action="delete">del</button>
             </div>`;
     
     };
 
     list.innerHTML = addedHTML
-    console.log(tasksArray) // see array in console
+    //console.log(tasksArray) // see array in console
     //save to local storage
     localStorage.setItem('savedTasks', JSON.stringify(tasksArray));
 }
 
+//  clock sec.
+const clock = document.getElementById('clock');
+function updateClock(){
+    const now = new Date();
+    const time = now.toLocaleTimeString([], { //present time 12:36:14
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false 
+    });
+    const date = now.toLocaleDateString()   //10/29/2026
+
+    const wordedDate = now.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+    });
+    clock.textContent = `${time} ~ ${date} ~ ${wordedDate}`
+}
+updateClock();
+setInterval(updateClock, 1000)
+//
