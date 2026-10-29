@@ -107,13 +107,12 @@ button:hover {
 }
 
 .trash-btn {
-    margin-left: auto;
+    margin-left: auto; /* push del to right edge */
 }
 
 .trash-btn:hover {
     color: var(--red);
 }
-
 
 /* TASK LIST */
 #todoList {
@@ -142,8 +141,22 @@ button:hover {
     cursor: pointer;
 }
 
+/* checkbox - green so it reads like a command */
+.checkbox {
+    color: var(--green);
+}
+
 /* done tasks - crossed out + faded */
-.task.done span {
+/* done tasks - only the text gets crossed out + faded */
+.task.done .task-text {
     text-decoration: line-through;
     color: var(--dim);
+}
+.task.done .checkbox {
+    color: var(--dim);
+}
+
+/* edit box - underline so you can tell it's editable */
+.edit-input {
+    border-bottom: 1px solid var(--green);
 }
